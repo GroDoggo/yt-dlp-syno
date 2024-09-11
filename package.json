@@ -1,0 +1,14 @@
+{
+  "name": "yt-dlp-syno",
+  "version": "1.0.0",
+  "description": "Un serveur Node.js pour télécharger des vidéos YouTube via yt-dlp", 
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "kleptoman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.0.0"
+  }
+}

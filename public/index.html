@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Téléchargeur YouTube</title>
+</head>
+<body>
+    <h1>Téléchargeur YouTube</h1>
+    <form id="download-form">
+        <input type="text" id="url" placeholder="Entrez l'URL de la vidéo YouTube" required>
+        <button type="submit">Télécharger</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script>
+        document.getElementById('download-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const url = document.getElementById('url').value;
+            const status = document.getElementById('status');
+            status.textContent = 'Téléchargement en cours...';
+
+            const response = await fetch('/download', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
+            });
+
+            if (response.ok) {
+                status.textContent = 'Téléchargement terminé !';
+            } else {
+                status.textContent = 'Erreur lors du téléchargement.';
+            }
+        });
+    </script>
+</body>
+</html>
